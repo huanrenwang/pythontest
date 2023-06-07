@@ -14,5 +14,3 @@ while len(teachers)>0:
     offices[random_office].append(teachers[random_Teacher])
     teachers.pop(random_Teacher)
 
-print(offices)
-print('Hello World')
