@@ -20,7 +20,7 @@ print(df['B'])
 2018-03-15   -0.010904
 Freq: D, Name: B, dtype: float64
  '''
-
+print()
 #创建特定数据的DataFrame
 df_1=pd.DataFrame({'A' : 1.,
                     'B' : pd.Timestamp('20180310'),
