@@ -15,3 +15,5 @@ basename=$(basename "$dirname")
 #echo "$basename打包成功"
 #sleep 1
 cp "$dirname/$basename"".tar" /home/ftp/
+#sleep 1
+time.sleep(1)
