@@ -1,6 +1,6 @@
 dates=pd.date_range('20180310',periods=6)
 df = pd.DataFrame(np.random.randn(6,4), index=dates, columns=['A','B','C','D'])#生成6行4列位置
-print(df)#输出6行4列的表格
+print()#输出6行4列的表格
 '''
                    A         B         C         D
 2018-03-10 -0.092889 -0.503172  0.692763 -1.261313
