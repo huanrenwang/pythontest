@@ -20,6 +20,7 @@ class DataBase(object):
         self.port = port
         self.user = user
         self.pwd = pwd
+        self.name = name
 
     def conn(self):
         try:
