@@ -8,6 +8,7 @@ dirname=$(dirname "$script_path")
   
 # 使用basename命令获取目录名称  
 basename=$(basename "$dirname")  
+basename=$(basename "$dirname1")
   
 # 输出目录名称  
 #echo "当前脚本所在的目录名称是：$basename"
