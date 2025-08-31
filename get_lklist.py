@@ -18,3 +18,5 @@ inventory:
 yaml_content['name'] = 'New Name'
 new_yaml = yaml.dump(yaml_content)
 print(new_yaml)
+print(new_yaml)
+
