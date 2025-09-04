@@ -1,0 +1,47 @@
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import padding
+import os
+ 
+def encrypt_message(message, key):
+    # 确保密钥长度为32字节（256位）
+    key = key.ljust(32)
+    # 生成随机初始化向量
+    iv = os.urandom(16)
+    # 创建加密器
+    cipher = Cipher(algorithms.AES(key.encode()), modes.CFB(iv), backend=default_backend())
+    encryptor = cipher.encryptor()
+    
+    # 添加填充（PKCS7）
+    padder = padding.PKCS7(128).padder()
+    padded_data = padder.update(message.encode()) + padder.finalize()
+    
+    # 加密数据
+    ciphertext = encryptor.update(padded_data) + encryptor.finalize()
+    return iv + ciphertext  # 返回IV和密文
+ 
+def decrypt_message(encrypted_message, key):
+    # 确保密钥长度为32字节（256位）
+    key = key.ljust(32)
+    # 分离IV和密文
+    iv = encrypted_message[:16]
+    ciphertext = encrypted_message[16:]
+    # 创建解密器
+    cipher = Cipher(algorithms.AES(key.encode()), modes.CFB(iv), backend=default_backend())
+    decryptor = cipher.decryptor()
+    
+    # 解密数据
+    decrypted_padded = decryptor.update(ciphertext) + decryptor.finalize()
+    
+    # 去除填充
+    unpadder = padding.PKCS7(128).unpadder()
+    decrypted_message = unpadder.update(decrypted_padded) + unpadder.finalize()
+    return decrypted_message.decode()
+ 
+# 使用示例
+key = "your_secret_key"  # 应该是一个32字节的字符串，例如通过某种方式安全生成或存储的密钥
+message = "Hello, World!"
+encrypted = encrypt_message(message, key)
+decrypted = decrypt_message(encrypted, key)
+print("Encrypted:", encrypted)
+print("Decrypted:", decrypted)
