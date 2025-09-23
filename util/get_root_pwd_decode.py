@@ -12,6 +12,7 @@ def ssh_linux(hostname, username, password, port):
         client.connect(hostname=hostname, port=port, username=username, password=password)
     except Exception:
         print('连接失败')
+        print('连接失败')
     return client
 
 
@@ -52,3 +53,4 @@ if __name__ == '__main__':
     linux_info = get_linux_info(hostname, username, password, cmd)[:-24].splitlines()
     root_pwd_decode_info = linux_info[-1]
     print(root_pwd_decode_info)
+
