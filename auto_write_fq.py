@@ -119,4 +119,6 @@ if __name__ == '__main__':
         response = dingding_msg(dingding_hooks, message_title, message_content)
         logging.info(f'{response.status_code}{response.text}')
         exit(0)
+
     logging.info("今日无反馈")
+     logging.info("今日无反馈")
