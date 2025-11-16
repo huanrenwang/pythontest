@@ -118,7 +118,9 @@ if __name__ == '__main__':
         dingding_hooks = 'https://oapi.dingtalk.com/robot/send?access_token=331ca1761ffc8d85ec501d843cc64f9cdb34c6952a3810d3ab4f3a2be4d88799'
         response = dingding_msg(dingding_hooks, message_title, message_content)
         logging.info(f'{response.status_code}{response.text}')
+        loggin.info('操作成功')
         exit(0)
 
     logging.info("今日无反馈")
      logging.info("今日无反馈")
+
